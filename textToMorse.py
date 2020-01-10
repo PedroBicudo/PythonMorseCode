@@ -1,7 +1,8 @@
 """Tradutor para morsecode."""
 from morsealphabet import MORSE_ALPHABET
-from functools import partial
-from winsound import Beep
+import functools
+import winsound
+
 
 def beepType(character):
     """Seleciona o beep de acordo com o simbolo.
@@ -13,8 +14,8 @@ def beepType(character):
 
     """
     return {
-        '.': partial(Beep, duration=90),
-        '-': partial(Beep, duration=900)
+        '.': functools.partial(winsound.Beep, duration=90),
+        '-': functools.partial(winsound.Beep, duration=900)
     }.get(character, lambda x: None)(2700)
 
 
@@ -27,14 +28,21 @@ def textToMorse(text) -> None:
         Texto qualquer.
     
     """
-    morse_text = [MORSE_ALPHABET.get(char, "unknown") for char in text.upper()]
-    print("Morse Code: ", end="")
+    if not set(text.upper()) <= set(MORSE_ALPHABET):
+        raise ValueError
+    
+    morse_text = [MORSE_ALPHABET[char] for char in text.upper()]
+    morse_text_size = len(' '.join(morse_text))
+
+    # Reserva um espaco com o tamanho do morse code
+    print(" "*morse_text_size, end='', flush=True)
+    print("\b"*morse_text_size, end='')
+
     for morse in morse_text:
-        print(morse, end=" ")
         for character in morse:
             beepType(character)
-    print()
-        
+            print(character, end='', flush=True)
+        print(" ", end='')
+
 if __name__ == "__main__":
-    textToMorse("OlaMundo")
-    textToMorse("Ola Mundo")
+    textToMorse("Olacomovaivoce")
