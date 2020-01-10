@@ -28,21 +28,21 @@ def textToMorse(text) -> None:
         Texto qualquer.
     
     """
+    if not isinstance(text, str):
+        raise TypeError
+
     if not set(text.upper()) <= set(MORSE_ALPHABET):
         raise ValueError
     
     morse_text = [MORSE_ALPHABET[char] for char in text.upper()]
-    morse_text_size = len(' '.join(morse_text))
+    size_morse_text = len(' '.join(morse_text))
 
     # Reserva um espaco com o tamanho do morse code
-    print(" "*morse_text_size, end='', flush=True)
-    print("\b"*morse_text_size, end='')
+    print(" "*size_morse_text, end='', flush=True)
+    print("\b"*size_morse_text, end='')
 
     for morse in morse_text:
         for character in morse:
             beepType(character)
             print(character, end='', flush=True)
         print(" ", end='')
-
-if __name__ == "__main__":
-    textToMorse("Olacomovaivoce")
