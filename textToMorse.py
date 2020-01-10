@@ -5,11 +5,10 @@ from winsound import Beep
 def beepType(character):
     """Seleciona o beep de acordo com o simbolo.
     
-    Arguments:
-        character {str} -- Caractere representando o ponto ou hifen.
-
-    Returns: 
-        None
+    Parameters
+    ----------
+    character: str
+        Caractere representando o ponto ou hifen.
 
     """
     if character == ".":
@@ -20,12 +19,11 @@ def beepType(character):
 def textToMorse(text) -> None:
     """Traduzir um texto qualquer para morsecode.
     
-    Arguments:
-        text {str} -- Texto qualquer
+    Parameters
+    ----------
+    text: str
+        Texto qualquer.
     
-    Returns:
-        None
-
     """
     text = text.upper()
     morse_text = list(map(lambda c: MORSE_ALPHABET.get(c, "unknown"), text))
@@ -34,6 +32,7 @@ def textToMorse(text) -> None:
         print(morse, end=" ")
         for character in morse:
             beepType(character)
+    print()
         
 if __name__ == "__main__":
     textToMorse("OlaMundo")
