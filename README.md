@@ -7,7 +7,7 @@ Juntamente ao resultado textual será mostrado um som representando cada caracte
 ## Como usar?
 ```
 >> from textToMorse import text_to_morse
->> textToMorse("OlaMundo")
+>> text_to_morse("OlaMundo")
 --- .-.. .- -- ..- -. -.. ---
 ```
 
