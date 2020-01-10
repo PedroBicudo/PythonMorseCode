@@ -8,7 +8,7 @@ Juntamente ao resultado textual será mostrado um som representando cada caracte
 ```
 >> from textToMorse import textToMorse
 >> textToMorse("OlaMundo")
-Morse Code: --- .-.. .- -- ..- -. -.. ---
+--- .-.. .- -- ..- -. -.. ---
 ```
 
 ## Notas
