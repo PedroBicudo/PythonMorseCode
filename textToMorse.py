@@ -25,8 +25,7 @@ def textToMorse(text) -> None:
         Texto qualquer.
     
     """
-    text = text.upper()
-    morse_text = list(map(lambda c: MORSE_ALPHABET.get(c, "unknown"), text))
+    morse_text = [MORSE_ALPHABET.get(char, "unknown") for char in text.upper()]
     print("Morse Code: ", end="")
     for morse in morse_text:
         print(morse, end=" ")
