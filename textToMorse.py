@@ -1,5 +1,6 @@
 """Tradutor para morsecode."""
 from morsealphabet import MORSE_ALPHABET
+from functools import partial
 from winsound import Beep
 
 def beepType(character):
@@ -11,10 +12,11 @@ def beepType(character):
         Caractere representando o ponto ou hifen.
 
     """
-    if character == ".":
-        Beep(2700, 90)
-    if character == "-":
-        Beep(2700, 900)
+    return {
+        '.': partial(Beep, 2700, 90),
+        '-': partial(Beep, 2700, 900)
+    }.get(character, lambda: None)()
+
 
 def textToMorse(text) -> None:
     """Traduzir um texto qualquer para morsecode.
