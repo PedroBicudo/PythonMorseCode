@@ -4,7 +4,7 @@ import functools
 import winsound
 
 
-def beepType(character):
+def start_beep(character):
     """Seleciona o beep de acordo com o simbolo.
     
     Parameters
@@ -19,9 +19,9 @@ def beepType(character):
     }.get(character, lambda x: None)(2700)
 
 
-def textToMorse(text) -> None:
+def text_to_morse(text) -> None:
     """Traduzir um texto qualquer para morsecode.
-    
+
     Parameters
     ----------
     text: str
@@ -43,6 +43,6 @@ def textToMorse(text) -> None:
 
     for morse in morse_text:
         for character in morse:
-            beepType(character)
+            start_beep(character)
             print(character, end='', flush=True)
         print(" ", end='')
