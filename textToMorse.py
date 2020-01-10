@@ -13,9 +13,9 @@ def beepType(character):
 
     """
     return {
-        '.': partial(Beep, 2700, 90),
-        '-': partial(Beep, 2700, 900)
-    }.get(character, lambda: None)()
+        '.': partial(Beep, duration=90),
+        '-': partial(Beep, duration=900)
+    }.get(character, lambda x: None)(2700)
 
 
 def textToMorse(text) -> None:
