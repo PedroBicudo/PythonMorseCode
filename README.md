@@ -5,7 +5,7 @@ Replicar o código morse em python, somente por diversão.
 Juntamente ao resultado textual será mostrado um som representando cada caractere no código morse.
 
 ## Como usar?
-```
+```python
 >> from textToMorse import text_to_morse
 >> text_to_morse("OlaMundo")
 --- .-.. .- -- ..- -. -.. ---
